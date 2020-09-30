@@ -83,6 +83,8 @@
     "yup": "^0.28.1"
   },
   "scripts": {
+    "commit": "git-cz",
+    "release": "standard-version",
     "start": "cross-env PORT=3001 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
@@ -92,10 +94,13 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "commitizen": "^4.2.1",
     "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "^3.3.0",
     "node-sass": "^4.13.1",
     "react-app-rewire-postcss": "^3.0.2",
-    "react-app-rewired": "^2.1.5"
+    "react-app-rewired": "^2.1.5",
+    "standard-version": "^9.0.0"
   },
   "browserslist": {
     "production": [
@@ -109,5 +114,10 @@
       "last 1 safari version"
     ]
   },
-  "homepage": ""
+  "homepage": "",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

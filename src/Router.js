@@ -5,6 +5,8 @@ import { connect } from "react-redux"
 import Spinner from "./components/@vuexy/spinner/Loading-spinner"
 import { ContextLayout } from "./utility/context/Layout"
 
+import CheckSessionContainer from "./containers/checkSessionContainer"
+
 // Route-based code splitting
 const Home = lazy(() =>
   import("./pages/home/Home")
@@ -27,6 +29,7 @@ const error404 = lazy(() => import("./pages/error404/404"))
 const RouteConfig = ({
   component: Component,
   fullLayout,
+  publicRoute,
   permission,
   user,
   ...rest
@@ -35,23 +38,25 @@ const RouteConfig = ({
     {...rest}
     render={props => {
       return (
-        <ContextLayout.Consumer>
-          {context => {
-            let LayoutTag =
-              fullLayout === true
-                ? context.fullLayout
-                : context.state.activeLayout === "horizontal"
-                ? context.horizontalLayout
-                : context.VerticalLayout
-              return (
-                <LayoutTag {...props} permission={props.user}>
-                  <Suspense fallback={<Spinner />}>
-                    <Component {...props} />
-                  </Suspense>
-                </LayoutTag>
-              )
-          }}
-        </ContextLayout.Consumer>
+        <CheckSessionContainer publicRoute={publicRoute}>
+          <ContextLayout.Consumer>
+            {context => {
+              let LayoutTag =
+                fullLayout === true
+                  ? context.fullLayout
+                  : context.state.activeLayout === "horizontal"
+                  ? context.horizontalLayout
+                  : context.VerticalLayout
+                return (
+                  <LayoutTag {...props} permission={props.user}>
+                    <Suspense fallback={<Spinner />}>
+                      <Component {...props} />
+                    </Suspense>
+                  </LayoutTag>
+                )
+            }}
+          </ContextLayout.Consumer>
+        </CheckSessionContainer>
       )
     }}
   />
@@ -76,20 +81,31 @@ class AppRouter extends React.Component {
             component={Home}
           />
           <AppRoute
+            path="/page2"
+            component={Page2}
+          />
+          <AppRoute
             path="/login"
             component={Login}
             fullLayout
+            publicRoute
           />
           <AppRoute
             path="/register"
             component={Register}
             fullLayout
+            publicRoute
           />
           <AppRoute
-            path="/page2"
-            component={Page2}
+            path="/spinner"
+            component={Spinner}
+            fullLayout
+            publicRoute
           />
-          <AppRoute component={error404} fullLayout />
+          <AppRoute
+            component={error404} 
+            fullLayout 
+            publicRoute />
         </Switch>
       </Router>
     )

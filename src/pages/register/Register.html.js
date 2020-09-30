@@ -11,7 +11,7 @@ import RegisterJWT from "./components/RegisterJWT"
 import registerImg from "../../assets/img/pages/register.jpg"
 import "../../assets/scss/pages/authentication.scss"
 
-export const RegisterHtml = ({}) => {
+export const RegisterHtml = (props) => {
   return(
     <Row className="m-0 justify-content-center">
       <Col

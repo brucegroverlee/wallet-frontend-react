@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import {
   Button,
+  Spinner,
   Card,
   CardBody,
   Row,
@@ -18,11 +19,24 @@ import loginImg from "../../assets/img/pages/login.png"
 import "../../assets/scss/pages/authentication.scss"
 
 export const LoginHtml = ({
+  fetching,
   email,
   password,
   handlerOnChangeEmail,
   handlerOnChangePassword,
+  handlerOnClickLogin,
 }) => {
+  const loginButton = (fetching) ? (
+    <Button.Ripple color="primary">
+      <Spinner color="white" size="sm" />
+      <span className="ml-50">Loading...</span>
+    </Button.Ripple>
+  ) : (
+    <Button.Ripple color="primary" type="submit" onClick={() => handlerOnClickLogin()}>
+      Login 
+    </Button.Ripple>
+  )
+
   return(
     <Row className="m-0 justify-content-center">
       <Col
@@ -90,9 +104,7 @@ export const LoginHtml = ({
                       >
                         Register                           
                       </Button.Ripple>
-                      <Button.Ripple color="primary" type="submit" onClick={() => history.push("/")}>
-                          Login 
-                      </Button.Ripple>
+                      {loginButton}
                     </div>
                   </Form>
                 </CardBody>
