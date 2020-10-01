@@ -11,7 +11,18 @@ import RegisterJWT from "./components/RegisterJWT"
 import registerImg from "../../assets/img/pages/register.jpg"
 import "../../assets/scss/pages/authentication.scss"
 
-export const RegisterHtml = (props) => {
+export const RegisterHtml = ({
+  fetching,
+  name,
+  email,
+  password,
+  confirmPass,
+  handlerOnChangeName,
+  handlerOnChangeEmail,
+  handlerOnChangePassword,
+  handlerOnChangeConfirmPassword,
+  handlerOnClickSignup,
+}) => {
   return(
     <Row className="m-0 justify-content-center">
       <Col
@@ -40,7 +51,18 @@ export const RegisterHtml = (props) => {
                   Fill the below form to create a new account.
                 </p>
                 <CardBody className="pt-1 pb-50">
-                  <RegisterJWT />
+                  <RegisterJWT
+                    fetching={fetching}
+                    name={name}
+                    email={email}
+                    password={password}
+                    confirmPass={confirmPass}
+                    handlerOnChangeName={handlerOnChangeName}
+                    handlerOnChangeEmail={handlerOnChangeEmail}
+                    handlerOnChangePassword={handlerOnChangePassword}
+                    handlerOnChangeConfirmPassword={handlerOnChangeConfirmPassword}
+                    handlerOnClickSignup={handlerOnClickSignup}
+                  />
                 </CardBody>
               </Card>
             </Col>

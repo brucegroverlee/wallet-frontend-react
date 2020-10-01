@@ -45,15 +45,17 @@ class Login extends React.Component {
     }
   }
 
-  render() {
+  componentDidMount() {
     if (localStorage.getItem("token") && this.props.loggedIn) {
       history.replace("/")
     }
+  }
 
+  render() {
     return (
       <React.Fragment>
         <LoginHtml
-          fetching={this.fetching}
+          fetching={this.state.fetching}
           email={this.state.email}
           password={this.state.password}
           handlerOnChangeEmail={this.handlerOnChangeEmail}
@@ -69,6 +71,7 @@ class Login extends React.Component {
     )
   }
 }
+
 const mapStateToProps = state => ({
   loggedIn: state.user.loggedIn,
 })
