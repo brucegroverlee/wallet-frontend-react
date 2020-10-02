@@ -9,7 +9,7 @@ import CheckSessionContainer from "./containers/checkSessionContainer"
 
 // Route-based code splitting
 const Home = lazy(() =>
-  import("./pages/home/Home")
+  import("./pages/home/Home.container")
 )
 
 const Page2 = lazy(() =>
