@@ -1,8 +1,29 @@
 import axios from "axios"
 import { API_ENDPOINT } from "../../configs/constants"
 
-export class Accounts {
-  static resource = "accounts"
+export class CategoryGroups {
+  static resource = "category-groups"
+
+  /**
+   *
+   */
+  static async create(payload) {
+    try {
+      const token = localStorage.getItem("token")
+      const result = await axios({
+        method: 'post',
+        url: `${API_ENDPOINT}/${this.resource}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        data: payload,
+      })
+      return result.data
+    } catch (error) {
+      throw error
+    }
+  }
 
   /**
    *
