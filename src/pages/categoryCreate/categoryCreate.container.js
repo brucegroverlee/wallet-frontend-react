@@ -83,7 +83,7 @@ class CategoryCreateContainer extends React.Component {
   async componentDidMount() {
     try {
       const result = await api.categoryGroups.list({
-        perPage: 20,
+        perPage: 100,
       })
       const options = result.data.map(categoryGroup => { return{ value: categoryGroup.id, label: categoryGroup.name, } })
       this.setState({

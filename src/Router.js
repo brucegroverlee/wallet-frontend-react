@@ -20,8 +20,8 @@ const CategoryCreate = lazy(() =>
   import("./pages/categoryCreate/categoryCreate.container")
 )
 
-const Page2 = lazy(() =>
-  import("./pages/page2/Page2")
+const TransactionCreate = lazy(() =>
+  import("./pages/transactionCreate/transactionCreate.container")
 )
 
 const Login = lazy(() =>
@@ -97,8 +97,8 @@ class AppRouter extends React.Component {
             component={CategoryCreate}
           />
           <AppRoute
-            path="/page2"
-            component={Page2}
+            path="/transactions/create"
+            component={TransactionCreate}
           />
           <AppRoute
             path="/login"
