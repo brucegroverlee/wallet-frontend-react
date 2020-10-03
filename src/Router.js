@@ -16,6 +16,10 @@ const CategoryGroupCreate = lazy(() =>
   import("./pages/categoryGroupCreate/categoryGroupCreate.container")
 )
 
+const CategoryCreate = lazy(() =>
+  import("./pages/categoryCreate/categoryCreate.container")
+)
+
 const Page2 = lazy(() =>
   import("./pages/page2/Page2")
 )
@@ -87,6 +91,10 @@ class AppRouter extends React.Component {
           <AppRoute
             path="/categories/create-category-group"
             component={CategoryGroupCreate}
+          />
+          <AppRoute
+            path="/categories/create-category"
+            component={CategoryCreate}
           />
           <AppRoute
             path="/page2"

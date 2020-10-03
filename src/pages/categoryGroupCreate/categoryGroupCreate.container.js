@@ -37,14 +37,14 @@ class CreateCategoryGroupContainer extends React.Component {
   handlerOnClickCreate = async () => {
     try {
       this.setState({ fetching: true, })
-      const result = await api.categoryGroups.create({
+      await api.categoryGroups.create({
         type: this.state.type.value,
         name: this.state.name,
         description: this.state.description,
       })
-      toast.success("The category Group was created successfully!")
+      toast.success("The category group was created successfully!")
       setTimeout(() => {
-        history.replace("/category-groups/list")
+        history.replace("/categories/list")
       }, 3500)
     } catch (error) {
       if (error.response.status === 406) {

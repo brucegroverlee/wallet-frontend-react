@@ -20,6 +20,7 @@ const currencyOptions = [
 
 export const CategoryForm = ({
   fetching,
+  categoryGroupOptions,
   categoryGroupId,
   name,
   description,
@@ -53,16 +54,35 @@ export const CategoryForm = ({
   return (
     <Card>
       <CardBody>
-        <Form className="mt-2">
+        <Form className="mt-2" onSubmit={e => e.preventDefault()}>
           <Row>
             <Col md="6" sm="12">
-              <Select
-                className="React"
-                classNamePrefix="select"
-                defaultValue={currencyOptions[0]}
-                name="type"
-                options={currencyOptions}
-              />
+              <FormGroup className="form-label-group">
+                <Select
+                  className="React"
+                  classNamePrefix="select"
+                  name="categoryGroup"
+                  id="categoryGroup"
+                  options={categoryGroupOptions}
+                  value={categoryGroupId}
+                  onChange={data => handlerOnChangeCategoryGroupId(data)}
+                />
+                <Label for="categoryGroup">Category Group</Label>
+              </FormGroup>
+            </Col>
+            <Col md="6" sm="12">
+              <FormGroup className="form-label-group">
+                <Select
+                  className="React"
+                  classNamePrefix="select"
+                  name="currency"
+                  id="currency"
+                  options={currencyOptions}
+                  value={currency}
+                  onChange={data => handlerOnChangeCurrency(data)}
+                />
+                <Label for="currency">Currency</Label>
+              </FormGroup>
             </Col>
             <Col md="6" sm="12">
               <FormGroup className="form-label-group">
@@ -71,8 +91,23 @@ export const CategoryForm = ({
                   name="name"
                   id="name"
                   placeholder="Name"
+                  value={name}
+                  onChange={e => handlerOnChangeName(e.target.value)}
                 />
                 <Label for="name">Name</Label>
+              </FormGroup>
+            </Col>
+            <Col md="6" sm="12">
+              <FormGroup className="form-label-group">
+                <Input
+                  type="number"
+                  name="budget"
+                  id="budget"
+                  placeholder="budget"
+                  value={budget}
+                  onChange={e => handlerOnChangeBudget(e.target.value)}
+                />
+                <Label for="budget">Budget</Label>
               </FormGroup>
             </Col>
             <Col sm="12">
@@ -82,6 +117,8 @@ export const CategoryForm = ({
                   name="description"
                   id="description"
                   placeholder="Description"
+                  value={description}
+                  onChange={e => handlerOnChangeDescription(e.target.value)}
                 />
                 <Label for="description">Description</Label>
               </FormGroup>

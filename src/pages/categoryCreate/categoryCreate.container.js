@@ -8,12 +8,13 @@ import { CategoryCreateHtml } from "./categoryCreate.html"
 class CategoryCreateContainer extends React.Component {
   state = {
     fetching: false,
-    categoryGroupId : "",
+    categoryGroupOptions: [],
+    categoryGroupId : { value: "", label: "" },
     name: "",
     description: "",
     isRecurrent: false,
     budget: 0,
-    currency: "",
+    currency: { value: "pen", label: "PEN" },
   }
 
   handlerOnChangeCategoryGroupId = (value) => {
@@ -53,16 +54,20 @@ class CategoryCreateContainer extends React.Component {
   }
 
   handlerOnClickCreate = async () => {
-    /*
     try {
       this.setState({ fetching: true, })
-      const result = await api.users.login({
-        email: this.state.email,
-        password: this.state.password,
+      await api.categories.create({
+        categoryGroupId: this.state.categoryGroupId.value,
+        name: this.state.name,
+        description: this.state.description,
+        isRecurrent: false,
+        budget: this.state.budget,
+        currency: this.state.currency.value,
       })
-      localStorage.setItem("token", result.token)
-      toast.success(`Oops! ${error.response.data.message}`)
-      history.replace("/")
+      toast.success("The category was created successfully!")
+      setTimeout(() => {
+        history.replace("/categories/list")
+      }, 3500)
     } catch (error) {
       if (error.response.status === 406) {
         toast.error(`Oops! ${error.response.data.message}`)
@@ -73,7 +78,26 @@ class CategoryCreateContainer extends React.Component {
       }
       this.setState({ fetching: false, })
     }
-    */
+  }
+
+  async componentDidMount() {
+    try {
+      const result = await api.categoryGroups.list({
+        perPage: 20,
+      })
+      const options = result.data.map(categoryGroup => { return{ value: categoryGroup.id, label: categoryGroup.name, } })
+      this.setState({
+        categoryGroupOptions: options,
+      })
+    } catch (error) {
+      if (error.response.status === 406) {
+        toast.error(`Oops! ${error.response.data.message}`)
+        console.error(error.response.data.message)
+      } else {
+        toast.error("Oops! something went wrong")
+        console.error(error.response)
+      }
+    }
   }
 
   render() {
@@ -81,6 +105,7 @@ class CategoryCreateContainer extends React.Component {
       <React.Fragment>
         <CategoryCreateHtml
           fetching={this.state.fetching}
+          categoryGroupOptions={this.state.categoryGroupOptions}
           categoryGroupId={this.state.categoryGroupId}
           name={this.state.name}
           description={this.state.description}
