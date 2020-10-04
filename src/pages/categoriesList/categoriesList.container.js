@@ -1,24 +1,12 @@
 import React from "react"
 import { api } from "../../api"
-import { HomeHtml } from "./Home.html"
+import { CategoriesListHtml } from "./categoriesList.html"
 
-class HomeContainer extends React.Component{
+class CategoriesListContainer extends React.Component{
   state = {
-    accounts: [],
     categoryGroups: [],
     categories: [],
     transactions: [],
-  }
-
-  async loadAccounts() {
-    try {
-      const accountsResult = await api.accounts.list({})
-      this.setState({
-        accounts: accountsResult.data,
-      })
-    } catch (error) {
-      throw error
-    }
   }
 
   async loadCategoryGroups() {
@@ -61,7 +49,6 @@ class HomeContainer extends React.Component{
   }
 
   componentDidMount() {
-    this.loadAccounts()
     this.loadCategoryGroups()
     this.loadCategories()
     this.loadTransactions()
@@ -69,8 +56,7 @@ class HomeContainer extends React.Component{
 
   render(){
     return (
-      <HomeHtml
-        accounts={this.state.accounts}
+      <CategoriesListHtml
         categoryGroups={this.state.categoryGroups}
         categories={this.state.categories}
         transactions={this.state.transactions}
@@ -79,4 +65,4 @@ class HomeContainer extends React.Component{
   }
 }
 
-export default HomeContainer
+export default CategoriesListContainer
