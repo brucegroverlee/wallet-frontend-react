@@ -1,6 +1,6 @@
 {
   "name": "wallet-frontend-react",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.6.3",
     "ag-grid-community": "^22.1.1",

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/brucegroverlee/wallet-frontend-react/compare/v1.8.0...v1.8.1) (2020-10-04)
+
+
+### Code Refactoring
+
+* **currencies:** add currencies file ([6fc77d1](https://github.com/brucegroverlee/wallet-frontend-react/commit/6fc77d16716b9208f945738615f05447a87978e5))
+
 ## [1.8.0](https://github.com/brucegroverlee/wallet-frontend-react/compare/v1.7.0...v1.8.0) (2020-10-04)
 
 
