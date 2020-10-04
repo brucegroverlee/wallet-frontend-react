@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/brucegroverlee/wallet-frontend-react/compare/v1.7.0...v1.8.0) (2020-10-04)
+
+
+### Features
+
+* **categories:** [42] add categories list view ([3f8c160](https://github.com/brucegroverlee/wallet-frontend-react/commit/3f8c160354204f816720c1c5e10c9c72a64db988))
+
 ## [1.7.0](https://github.com/brucegroverlee/wallet-frontend-react/compare/v1.6.0...v1.7.0) (2020-10-04)
 
 
