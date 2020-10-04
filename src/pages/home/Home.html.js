@@ -5,6 +5,7 @@ import {
 } from "react-feather"
 import { Title } from "../../components/title"
 import { AccountCards } from "./components/AccountCard"
+import { TransactionTableContainer } from "../../components/transactionsTable/transactionsTable.container"
 
 export const HomeHtml = ({
   accounts,
@@ -41,6 +42,10 @@ export const HomeHtml = ({
       />
       <Title
         title="Transactions"
+      />
+      <TransactionTableContainer
+        accounts={accounts}
+        categories={categories}
       />
     </React.Fragment>
   )

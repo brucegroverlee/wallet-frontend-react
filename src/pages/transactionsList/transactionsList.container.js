@@ -1,13 +1,11 @@
 import React from "react"
 import { api } from "../../api"
-import { HomeHtml } from "./Home.html"
+import { TransactionsListHtml } from "./transactionsList.html"
 
-class HomeContainer extends React.Component{
+class TransactionsListContainer extends React.Component{
   state = {
     accounts: [],
-    categoryGroups: [],
     categories: [],
-    transactions: [],
   }
 
   async loadAccounts() {
@@ -39,14 +37,12 @@ class HomeContainer extends React.Component{
 
   render(){
     return (
-      <HomeHtml
+      <TransactionsListHtml
         accounts={this.state.accounts}
-        categoryGroups={this.state.categoryGroups}
         categories={this.state.categories}
-        transactions={this.state.transactions}
       />
     )
   }
 }
 
-export default HomeContainer
+export default TransactionsListContainer

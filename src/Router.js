@@ -23,6 +23,9 @@ const CategoryCreate = lazy(() =>
 const TransactionCreate = lazy(() =>
   import("./pages/transactionCreate/transactionCreate.container")
 )
+const TransactionsList = lazy(() =>
+  import("./pages/transactionsList/transactionsList.container")
+)
 
 const Login = lazy(() =>
   import("./pages/login/Login.container")
@@ -99,6 +102,10 @@ class AppRouter extends React.Component {
           <AppRoute
             path="/transactions/create"
             component={TransactionCreate}
+          />
+          <AppRoute
+            path="/transactions/list"
+            component={TransactionsList}
           />
           <AppRoute
             path="/login"
