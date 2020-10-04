@@ -85,7 +85,7 @@ class CategoryCreateContainer extends React.Component {
       const result = await api.categoryGroups.list({
         perPage: 100,
       })
-      const options = result.data.map(categoryGroup => { return{ value: categoryGroup.id, label: categoryGroup.name, } })
+      const options = result.data.map(categoryGroup => { return{ value: categoryGroup.id, label: `[${categoryGroup.type}] ${categoryGroup.name}`, } })
       this.setState({
         categoryGroupOptions: options,
       })

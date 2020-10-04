@@ -12,7 +12,7 @@ export const CategoryStats = ({
   }, 0)
   const totalFormated = `${category.currency.toUpperCase()} ${numeral(Math.abs(total)).format("0,0.00")}`
   const budgetFormated = `${category.currency.toUpperCase()} ${numeral(category.budget).format("0,0.00")}`
-  const percent = (100 * total) / category.budget
+  const percent = (100 * Math.abs(total)) / category.budget
 
   return(
     <CategoryStatsHtml

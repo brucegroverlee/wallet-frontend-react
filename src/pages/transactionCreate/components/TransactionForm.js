@@ -12,11 +12,7 @@ import {
   Label
 } from "reactstrap"
 import Select from "react-select"
-
-const currencyOptions = [
-  { value: "usd", label: "USD" },
-  { value: "pen", label: "PEN" },
-]
+import { currencyOptions } from "../../../configs/currencies"
 
 export const TransactionForm = ({
   fetching,

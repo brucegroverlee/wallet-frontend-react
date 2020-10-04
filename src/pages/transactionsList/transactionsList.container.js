@@ -10,7 +10,9 @@ class TransactionsListContainer extends React.Component{
 
   async loadAccounts() {
     try {
-      const accountsResult = await api.accounts.list({})
+      const accountsResult = await api.accounts.list({
+        perPage: 100,
+      })
       this.setState({
         accounts: accountsResult.data,
       })
@@ -21,7 +23,9 @@ class TransactionsListContainer extends React.Component{
 
   async loadCategories() {
     try {
-      const categoriesResult = await api.categories.list({})
+      const categoriesResult = await api.categories.list({
+        perPage: 100,
+      })
       this.setState({
         categories: categoriesResult.data,
       })
